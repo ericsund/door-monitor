@@ -10,11 +10,11 @@ This is a Python + Raspberry Pi project which checks if your door is open or clo
 * 1 magnetic switch
 * 1 WiFi dongle (for older Pis)
 
-###Setup
+### Setup
 * Go to apps.twitter.com and create an application.
 * Copy your consumer keys and access keys into a file called keys
 * Connect and wire your Raspberry Pi
 * Run the Python script
 
-##Todo
+### Todo
 * Include wiring instructions
