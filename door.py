@@ -7,7 +7,19 @@ from datetime import datetime
 
 # Hardware settings config
 gpio_pin = 12
+
+# Defaults to initial state of closed door
+# Handkes optional arg for initial state of open door
 door_change = True
+if len(sys.argv) > 1:
+	door_change_arg = sys.argv[1]
+
+	if door_change_arg == "--door-open":
+		door_change = False
+	elif door_change_arg == "--door-closed":
+		door_change = True
+	else:
+		print error + "Arg must be either --door-closed or --door-open"
 
 # Twitter API settings config
 keys_file = open("keys", "r")
@@ -25,6 +37,7 @@ debug = "[DEBUG] "
 print debug + "Initializing hardware"
 io.setmode(io.BOARD)
 io.setup(gpio_pin, io.IN, pull_up_down=io.PUD_UP)
+print debug + "READY!"
 
 # Check for door changes
 while True:
@@ -39,8 +52,3 @@ while True:
 
 		door_change = not door_change
 		time.sleep(1)
-
-
-
-
-
