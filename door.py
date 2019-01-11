@@ -9,7 +9,7 @@ from datetime import datetime
 gpio_pin = 12
 
 # Defaults to initial state of closed door
-# Handkes optional arg for initial state of open door
+# Handles optional arg for initial state of open door
 door_change = True
 if len(sys.argv) > 1:
 	door_change_arg = sys.argv[1]
@@ -39,16 +39,28 @@ io.setmode(io.BOARD)
 io.setup(gpio_pin, io.IN, pull_up_down=io.PUD_UP)
 print debug + "READY!"
 
+def sendTweet():
+	current_time = datetime.now().strftime("%Y-%m-%d | %H:%M:%S")
+	update_string = "[ " + current_time + " ] Door was opened."
+
+	sent = False
+	while not sent:
+		try:
+			t.update_status(status = update_string)
+			sent = True
+		except ConnectionError:
+			time.sleep(5)
+
 # Check for door changes
 while True:
-	if io.input(gpio_pin) == door_change:
-		print debug + "Door changed"
-		print debug + "Sending tweet..."
-				
-		current_time = datetime.now().strftime("%Y-%m-%d | %H:%M:%S")
-		update_string = "[ " + current_time + " ] Door was opened."
-		t.update_status(status = update_string)
-		print debug + "Tweet sent"
+	try:
+		if io.input(gpio_pin) == door_change:
+			print debug + "Door changed"
+			print debug + "Sending tweet..."
+			sendTweet()
+			print debug + "Tweet sent"
 
-		door_change = not door_change
+			door_change = not door_change
 		time.sleep(1)
+	except Exception as e:
+		logging.error(traceback.format_exc())
