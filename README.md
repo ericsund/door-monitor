@@ -1,4 +1,4 @@
-# door-monitor
+# Door Monitor
 
 This is a Python + Raspberry Pi project which checks if your door is open or closed.  Magnetic switches will come in contact to trigger actions.
 
@@ -12,9 +12,9 @@ This is a Python + Raspberry Pi project which checks if your door is open or clo
 
 ### Setup
 * Go to apps.twitter.com and create an application.
-* Copy your consumer keys and access keys into a file called keys
-* Connect and wire your Raspberry Pi
-* Run the Python script
+* Copy your consumer keys and access keys into a file called keys, in the repo root dir.
+* Connect and wire your Raspberry Pi, see http://pinout.xyz/.  This project uses GPIO pin 12.
+* Run the Python script: `sudo python main.py`
 
 ### Todo
 * Include wiring instructions
