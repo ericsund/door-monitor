@@ -68,7 +68,6 @@ def play_doorbell(audio_file_path):
 # Main
 while True:
 	try:
-		print("pin signal " + str(io.input(gpio_pin)))
 		if io.input(gpio_pin) == magnets_apart:
 			
 			# close a currently open door
