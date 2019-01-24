@@ -16,5 +16,9 @@ This is a Python + Raspberry Pi project which checks if your door is open or clo
 * Connect and wire your Raspberry Pi, see http://pinout.xyz/.  This project uses GPIO pin 12.
 * Run the Python script: `sudo python main.py`
 
+### Features
+* Send a tweet with the date and time when door is opened and closed
+* Play a door open and close sound
+
 ### Todo
 * Include wiring instructions
