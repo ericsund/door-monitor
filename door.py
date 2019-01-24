@@ -48,9 +48,9 @@ def sendTweet(door_state):
 	
 	update_string = ""
 	if door_state == True: # door_open = True
-		update_string = "[ " + current_time + " ] Door was " + " opened"
+		update_string = "[ " + current_time + " ] Door was opened"
 	elif not door_state: # door_open = False
-		update_string = "[ " + current_time + " ] Door was " + " closed"
+		update_string = "[ " + current_time + " ] Door was closed"
 
 	sent = False
 	while not sent:
@@ -76,7 +76,7 @@ while True:
 				if not initial_state:
 					door_open = False
 					print debug + "Sending tweet door closed..."
-					play_doorbell("windows.mp3")
+					play_doorbell("windows_out.mp3")
 					sendTweet(door_open)
 					print debug + "Tweet sent!"
 					magnets_apart = True
@@ -88,7 +88,7 @@ while True:
 				if not initial_state:
 					door_open = True
 					print debug + "Sending tweet door open..."
-					play_doorbell("windows.mp3")
+					play_doorbell("windows_in.mp3")
 					sendTweet(door_open)
 					print debug + "Tweet sent!"
 					magnets_apart = False
